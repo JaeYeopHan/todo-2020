@@ -1,5 +1,6 @@
-import { Filter, ITodo, todoActions, todoReducer } from "./Todo";
+import { Filter, ITodo, todoActions, todoReducer, todoSelectors } from "./Todo";
 
+// reducers
 test("should add a new item", () => {
   // When
   const prevState: ITodo = {
@@ -101,4 +102,29 @@ test("should chnage filter", () => {
 
   // Then
   expect(result.currentFilter).toEqual(newFilter);
+});
+
+// selectors
+test("should return all items when filter is DONE", () => {
+  // Given
+  const item = {
+    id: "1",
+    contents: "test",
+    createdTime: 1,
+    isCompleted: false
+  };
+  const doneItem = {
+    ...item,
+    isCompleted: true
+  };
+  const state: ITodo = {
+    items: [item, doneItem],
+    currentFilter: Filter.DONE
+  };
+
+  // When
+  const result = todoSelectors.visibleItems(state);
+
+  // Then
+  expect(result).toEqual([doneItem]);
 });

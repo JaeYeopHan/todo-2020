@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { generateId } from "@/utils/item";
 
@@ -70,6 +70,28 @@ const _ = createSlice({
     }
   }
 });
+
+const getFilter = (state: ITodo) => state.currentFilter;
+const getItems = (state: ITodo) => state.items;
+const getVisibleItems = createSelector(
+  [getFilter, getItems],
+  (filter, items) => {
+    switch (filter) {
+      case Filter.ALL:
+        return items;
+      case Filter.ACTIVE:
+        return items.filter(item => !item.isCompleted);
+      case Filter.DONE:
+        return items.filter(item => item.isCompleted);
+    }
+  }
+);
+
+export const todoSelectors = {
+  filter: getFilter,
+  items: getItems,
+  visibleItems: getVisibleItems
+};
 
 export const TODO = _.name;
 export const todoActions = _.actions;
