@@ -105,26 +105,33 @@ test("should chnage filter", () => {
 });
 
 // selectors
-test("should return all items when filter is DONE", () => {
-  // Given
+describe("visibileItems", () => {
   const item = {
     id: "1",
     contents: "test",
     createdTime: 1,
     isCompleted: false
   };
+  const item2 = {
+    ...item,
+    id: "2"
+  };
   const doneItem = {
     ...item,
     isCompleted: true
   };
-  const state: ITodo = {
-    items: [item, doneItem],
-    currentFilter: Filter.DONE
-  };
 
-  // When
-  const result = todoSelectors.visibleItems(state);
+  test("should return items when filter is DONE", () => {
+    // Given
+    const state: ITodo = {
+      items: [item, doneItem, item2],
+      currentFilter: Filter.DONE
+    };
 
-  // Then
-  expect(result).toEqual([doneItem]);
+    // When
+    const result = todoSelectors.visibleItems(state);
+
+    // Then
+    expect(result).toEqual([doneItem]);
+  });
 });
