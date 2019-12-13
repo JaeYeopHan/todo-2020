@@ -1,15 +1,15 @@
 import React from "react";
 
+import { ListContainer } from "@/components/shared/ListContainer";
+import { Main } from "@/components/shared/Main";
+
 export default () => {
   return (
-    <h1>
-      <a
-        href="https://github.com/JaeYeopHan/cra-template-unicorn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        cra-template-unicorn
-      </a>
-    </h1>
+    <Main>
+      <h1>Todo</h1>
+      <ListContainer>
+        <li>test</li>
+      </ListContainer>
+    </Main>
   );
 };
