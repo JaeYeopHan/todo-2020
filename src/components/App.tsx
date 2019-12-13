@@ -6,6 +6,7 @@ import { Main } from "@/components/shared/Main";
 import { IRootState } from "@/features";
 import { IItem, TODO, todoSelectors } from "@/features/Todo";
 
+import { Input } from "./Input";
 import { Item } from "./Item";
 
 export default () => {
@@ -16,6 +17,7 @@ export default () => {
   return (
     <Main>
       <h1>Todo</h1>
+      <Input />
       <ListContainer>
         {result.map(item => (
           <Item key={item.id} {...item} />
