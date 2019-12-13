@@ -83,6 +83,8 @@ const getVisibleItems = createSelector(
         return items.filter(item => !item.isCompleted);
       case Filter.DONE:
         return items.filter(item => item.isCompleted);
+      default:
+        throw Error(`Not found filter: ${filter}`);
     }
   }
 );
