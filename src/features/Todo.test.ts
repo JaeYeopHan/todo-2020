@@ -134,4 +134,18 @@ describe("visibileItems", () => {
     // Then
     expect(result).toEqual([doneItem]);
   });
+
+  test("should return items when filter is DONE", () => {
+    // Given
+    const state: ITodo = {
+      items: [item, doneItem, item2],
+      currentFilter: Filter.ALL
+    };
+
+    // When
+    const result = todoSelectors.visibleItems(state);
+
+    // Then
+    expect(result).toEqual([item, item2, doneItem]);
+  });
 });
