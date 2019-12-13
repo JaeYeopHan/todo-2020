@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import { generateId } from "@/utils/item";
+
 export interface IItem {
   id: string;
   contents: string;
@@ -48,7 +50,3 @@ const _ = createSlice({
 export const COUNTER = _.name;
 export const counterActions = _.actions;
 export const counterReducer = _.reducer;
-
-export function generateId(timestamp: number) {
-  return `item_${timestamp}`;
-}
