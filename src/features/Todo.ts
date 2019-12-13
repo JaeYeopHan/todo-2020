@@ -25,6 +25,10 @@ export interface IAddPayload {
   createdTime: number;
 }
 
+export interface IDeletePayload {
+  id: string;
+}
+
 const initialState: ITodo = {
   items: [],
   currentFilter: Filter.ALL
@@ -43,6 +47,11 @@ const _ = createSlice({
         createdTime,
         isCompleted: false
       });
+    },
+    delete(state, { payload }: PayloadAction<IDeletePayload>) {
+      const newItems = state.items.filter(({ id }) => payload.id !== id);
+
+      state.items = newItems;
     }
   }
 });
