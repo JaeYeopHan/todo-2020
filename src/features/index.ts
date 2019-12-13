@@ -1,7 +1,11 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 
-const rootReducer = combineReducers({});
+import { COUNTER,counterReducer } from "./Todo";
+
+const rootReducer = combineReducers({
+  [COUNTER]: counterReducer
+});
 
 const store = configureStore({ reducer: rootReducer });
 
