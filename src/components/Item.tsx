@@ -11,6 +11,7 @@ export const Item = (props: IItemProps) => {
       <label htmlFor={id} />
       <input type="checkbox" id={id}></input>
       <div>{contents}</div>
+      <button>Delete</button>
     </li>
   );
 };
