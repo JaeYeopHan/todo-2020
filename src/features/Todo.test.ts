@@ -1,4 +1,4 @@
-import { counterActions, counterReducer, Filter, ITodo } from "./Todo";
+import { Filter, ITodo, todoActions, todoReducer } from "./Todo";
 
 test("should add a new item", () => {
   // When
@@ -10,9 +10,9 @@ test("should add a new item", () => {
   const createdTime = new Date().getTime();
 
   // Given
-  const result = counterReducer(
+  const result = todoReducer(
     prevState,
-    counterActions.add({
+    todoActions.add({
       contents,
       createdTime
     })
@@ -28,7 +28,7 @@ test("should add a new item", () => {
   expect(result.items).toEqual(expected);
 });
 
-test("should delete a item", () => {
+test("should delete the item", () => {
   // When
   const createdTime = new Date().getTime();
   const item = {
@@ -43,13 +43,62 @@ test("should delete a item", () => {
   };
 
   // Given
-  const result = counterReducer(
+  const result = todoReducer(
     prevState,
-    counterActions.delete({
+    todoActions.delete({
       id: `item_${createdTime}`
     })
   );
 
   // Then
   expect(result.items).toEqual([]);
+});
+
+test("should toggle isCompleted status of the item", () => {
+  // When
+  const createdTime = new Date().getTime();
+  const item = {
+    id: `item_${createdTime}`,
+    contents: "testtest",
+    createdTime,
+    isCompleted: false
+  };
+  const prevState: ITodo = {
+    items: [item],
+    currentFilter: Filter.ALL
+  };
+
+  // Given
+  const result = todoReducer(
+    prevState,
+    todoActions.toggle({
+      id: `item_${createdTime}`
+    })
+  );
+
+  // Then
+  expect(result.items).toEqual([
+    {
+      ...item,
+      isCompleted: true
+    }
+  ]);
+});
+
+test("should chnage filter", () => {
+  // Given
+  const prevState: ITodo = {
+    items: [],
+    currentFilter: Filter.ALL
+  };
+  const newFilter = Filter.DONE;
+
+  // When
+  const result = todoReducer(
+    prevState,
+    todoActions.changeFilter({ filter: newFilter })
+  );
+
+  // Then
+  expect(result.currentFilter).toEqual(newFilter);
 });

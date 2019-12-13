@@ -9,6 +9,8 @@ export interface IItem {
   isCompleted: boolean;
 }
 
+export type IItemIdentity = Pick<IItem, "id">;
+
 export interface ITodo {
   items: IItem[];
   currentFilter: Filter;
@@ -25,9 +27,9 @@ export interface IAddPayload {
   createdTime: number;
 }
 
-export interface IDeletePayload {
-  id: string;
-}
+export interface IDeletePayload extends IItemIdentity {}
+
+export interface ITogglePayload extends IItemIdentity {}
 
 const initialState: ITodo = {
   items: [],
@@ -52,10 +54,23 @@ const _ = createSlice({
       const newItems = state.items.filter(({ id }) => payload.id !== id);
 
       state.items = newItems;
+    },
+    toggle(state, { payload }: PayloadAction<ITogglePayload>) {
+      const newItems = state.items.map((item: IItem) => {
+        if (payload.id === item.id) {
+          item.isCompleted = !item.isCompleted;
+        }
+        return item;
+      });
+
+      state.items = newItems;
+    },
+    changeFilter(state, { payload }: PayloadAction<{ filter: Filter }>) {
+      state.currentFilter = payload.filter;
     }
   }
 });
 
-export const COUNTER = _.name;
-export const counterActions = _.actions;
-export const counterReducer = _.reducer;
+export const TODO = _.name;
+export const todoActions = _.actions;
+export const todoReducer = _.reducer;
