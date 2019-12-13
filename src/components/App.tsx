@@ -6,6 +6,7 @@ import { Main } from "@/components/shared/Main";
 import { IRootState } from "@/features";
 import { IItem, TODO, todoSelectors } from "@/features/Todo";
 
+import { Filters } from "./Filters";
 import { Input } from "./Input";
 import { Item } from "./Item";
 
@@ -23,6 +24,7 @@ export default () => {
           <Item key={item.id} {...item} />
         ))}
       </ListContainer>
+      <Filters />
     </Main>
   );
 };
