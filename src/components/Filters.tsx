@@ -1,13 +1,34 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
-interface IFiltersProps {}
+import { Filter, todoActions } from "@/features/Todo";
 
-export const Filters = (props: IFiltersProps) => {
+export const Filters = () => {
+  const dispatch = useDispatch();
+
   return (
     <section>
-      <button>All</button>
-      <button>Active</button>
-      <button>Done</button>
+      <button
+        onClick={() =>
+          dispatch(todoActions.changeFilter({ filter: Filter.ALL }))
+        }
+      >
+        All
+      </button>
+      <button
+        onClick={() =>
+          dispatch(todoActions.changeFilter({ filter: Filter.ACTIVE }))
+        }
+      >
+        Active
+      </button>
+      <button
+        onClick={() =>
+          dispatch(todoActions.changeFilter({ filter: Filter.DONE }))
+        }
+      >
+        Done
+      </button>
     </section>
   );
 };
