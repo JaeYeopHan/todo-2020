@@ -1,0 +1,14 @@
+.filters {
+  display: flex;
+}
+
+.filter-button {
+  flex: 1;
+  padding: 4px 0px;
+  background-color: transparent;
+  color: #a19f9c;
+}
+
+.filter-button--active {
+  color: #ff971d;
+}
