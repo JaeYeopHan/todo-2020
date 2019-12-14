@@ -1,3 +1,5 @@
+import "./Input.scss";
+
 import React, { ChangeEvent, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
@@ -31,9 +33,17 @@ export const Input = (props: IInputProps) => {
   }, [val, isError]);
 
   return (
-    <section>
-      <textarea onChange={onChangeInput} value={val} />
-      <button onClick={onClickSubmit}>Submit</button>
+    <section className="input">
+      <textarea
+        className="input-textarea"
+        onChange={onChangeInput}
+        value={val}
+        placeholder="Enter the TODO item"
+        wrap="off"
+      />
+      <button className="btn-submit" onClick={onClickSubmit}>
+        Submit
+      </button>
     </section>
   );
 };

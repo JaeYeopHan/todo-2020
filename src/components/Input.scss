@@ -1,0 +1,16 @@
+.input {
+  display: flex;
+}
+
+.input-textarea {
+  flex: 1;
+  resize: none;
+  border: #ffe8d6;
+  padding: 12px;
+}
+
+.btn-submit {
+  background-color: #ff971d;
+  color: #f9f6f7;
+  border: transparent;
+}
