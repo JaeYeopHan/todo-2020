@@ -1,3 +1,5 @@
+import "./ListContainer.scss";
+
 import React, { ReactNode } from "react";
 
 interface IListContainerProps {
@@ -5,5 +7,5 @@ interface IListContainerProps {
 }
 
 export const ListContainer = (props: IListContainerProps) => {
-  return <ul>{props.children}</ul>;
+  return <ul className="list">{props.children}</ul>;
 };
