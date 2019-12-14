@@ -34,12 +34,10 @@ export interface IDeletePayload extends IItemIdentity {}
 
 export interface ITogglePayload extends IItemIdentity {}
 
-const initialState: ITodo = getState({
-  [name]: {
-    items: [],
-    currentFilter: Filter.ALL
-  }
-})[name];
+const initialState: ITodo = getState(name, {
+  items: [],
+  currentFilter: Filter.ALL
+});
 
 const _ = createSlice({
   name,
