@@ -1,5 +1,6 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import { sortWithBoolean } from "@/utils/array";
 import { generateId } from "@/utils/item";
 import { getState } from "@/utils/storage";
 
@@ -81,7 +82,11 @@ const getVisibleItems = createSelector(
   (filter, items) => {
     switch (filter) {
       case Filter.ALL:
-        return items;
+        return items
+          .slice()
+          .sort((prev, next) =>
+            sortWithBoolean(prev.isCompleted, next.isCompleted)
+          );
       case Filter.ACTIVE:
         return items.filter(item => !item.isCompleted);
       case Filter.DONE:
