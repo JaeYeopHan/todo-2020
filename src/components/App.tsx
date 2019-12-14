@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+import { Header } from "@/components/shared/Header";
 import { ListContainer } from "@/components/shared/ListContainer";
 import { Main } from "@/components/shared/Main";
 import { IRootState } from "@/features";
@@ -17,7 +18,7 @@ export default () => {
 
   return (
     <Main>
-      <h1>Todo</h1>
+      <Header>Todo</Header>
       <Input />
       <ListContainer>
         {result.map(item => (
