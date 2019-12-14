@@ -1,11 +1,11 @@
 import {
   combineReducers,
+  configureStore,
   Dispatch,
   getDefaultMiddleware,
   Middleware,
   MiddlewareAPI
 } from "@reduxjs/toolkit";
-import { configureStore } from "@reduxjs/toolkit";
 
 import { setState } from "@/utils/storage";
 
@@ -15,23 +15,18 @@ const rootReducer = combineReducers({
   [TODO]: todoReducer
 });
 
-function persist() {
-  const persistMiddleware: Middleware = ({ getState }: MiddlewareAPI) => (
-    next: Dispatch
-  ) => action => {
-    const returnValue = next(action);
+const persistMiddleware: Middleware = ({ getState }: MiddlewareAPI) => (
+  next: Dispatch
+) => action => {
+  const returnValue = next(action);
 
-    setState(getState());
+  setState(getState());
 
-    return returnValue;
-  };
-
-  return persistMiddleware;
-}
-const store = configureStore({
-  reducer: rootReducer,
-  middleware: [...getDefaultMiddleware(), persist()]
-});
+  return returnValue;
+};
 
 export type IRootState = ReturnType<typeof rootReducer>;
-export default store;
+export default configureStore({
+  reducer: rootReducer,
+  middleware: [...getDefaultMiddleware(), persistMiddleware]
+});
