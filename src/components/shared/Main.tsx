@@ -1,3 +1,5 @@
+import "./Main.scss";
+
 import React, { ReactNode } from "react";
 
 interface IMainProps {
@@ -5,5 +7,5 @@ interface IMainProps {
 }
 
 export const Main = (props: IMainProps) => {
-  return <main>{props.children}</main>;
+  return <main className="main">{props.children}</main>;
 };
