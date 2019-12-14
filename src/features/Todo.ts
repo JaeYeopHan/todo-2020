@@ -1,7 +1,9 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { sortWithBoolean } from "@/utils/array";
 import { generateId } from "@/utils/item";
+import { getState } from "@/utils/storage";
+
+const name = "Todo";
 
 export interface IItem {
   id: string;
@@ -32,13 +34,15 @@ export interface IDeletePayload extends IItemIdentity {}
 
 export interface ITogglePayload extends IItemIdentity {}
 
-const initialState: ITodo = {
-  items: [],
-  currentFilter: Filter.ALL
-};
+const initialState: ITodo = getState({
+  [name]: {
+    items: [],
+    currentFilter: Filter.ALL
+  }
+})[name];
 
 const _ = createSlice({
-  name: "Todo",
+  name,
   initialState,
   reducers: {
     add(state, { payload }: PayloadAction<IAddPayload>) {
@@ -79,9 +83,7 @@ const getVisibleItems = createSelector(
   (filter, items) => {
     switch (filter) {
       case Filter.ALL:
-        return items.sort((prev, next) =>
-          sortWithBoolean(prev.isCompleted, next.isCompleted)
-        );
+        return items;
       case Filter.ACTIVE:
         return items.filter(item => !item.isCompleted);
       case Filter.DONE:
