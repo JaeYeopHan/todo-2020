@@ -50,5 +50,6 @@
   "devDependencies": {
     "@types/classnames": "^2.2.9",
     "classnames": "^2.2.6"
-  }
+  },
+  "homepage": "https://jaeyeophan.github.io/todo-2020"
 }
