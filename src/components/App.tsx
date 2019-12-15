@@ -6,6 +6,7 @@ import { ListContainer } from "@/components/shared/ListContainer";
 import { Main } from "@/components/shared/Main";
 import { IRootState } from "@/features";
 import { IItem, TODO, todoSelectors } from "@/features/Todo";
+import { useRemout } from "@/hooks/useRemount";
 
 import { Filters } from "./Filters";
 import { Input } from "./Input";
@@ -13,21 +14,25 @@ import { Item } from "./Item";
 import { Toast } from "./shared/Toast";
 
 export default () => {
-  const result = useSelector<IRootState, IItem[]>(state =>
+  const items = useSelector<IRootState, IItem[]>(state =>
     todoSelectors.visibleItems(state[TODO])
   );
+  const [key, remount] = useRemout();
 
   return (
-    <Main>
+    <Main key={key}>
       <Header>Todo</Header>
       <Input />
       <ListContainer>
-        {result.map(item => (
+        {items.map(item => (
           <Item key={item.id} {...item} />
         ))}
       </ListContainer>
       <Filters />
-      <Toast>Error</Toast>
+      <Toast id={TODO} onClose={remount}>
+        입력할 수 없는 특수문자를 입력했거나 올바르지 않은 입력입니다. 다시
+        시도해주세요.
+      </Toast>
     </Main>
   );
 };

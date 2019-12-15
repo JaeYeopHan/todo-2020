@@ -5,7 +5,7 @@ import React, { ChangeEvent, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { toastActions } from "@/features/Toast";
-import { todoActions } from "@/features/Todo";
+import { TODO, todoActions } from "@/features/Todo";
 import { useValidateInput } from "@/hooks/useValidateInput";
 
 export const Input = () => {
@@ -38,9 +38,7 @@ export const Input = () => {
 
   useEffect(() => {
     if (isError) {
-      dispatch(toastActions.open("error-test"));
-      // 전체 dimmed popup을 띄운다.
-      // 해지 시, 현재 value에 있는 값에서 마지막 스트링을 제거한다.
+      dispatch(toastActions.open(TODO));
     }
   }, [val, isError, setVal, dispatch]);
 
