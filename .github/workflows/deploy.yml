@@ -30,7 +30,7 @@ jobs:
 
       - run: yarn install
       - run: yarn build
-      - run: yarn test
+      - run: yarn test:ci
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v2
