@@ -2,8 +2,6 @@
 
 .toast {
   &-dimmed {
-    $toast-zIndex: 99;
-
     overflow: inherit;
     position: fixed;
     bottom: 0;
@@ -28,8 +26,8 @@
     max-height: 20em;
     margin: 0 auto;
     padding: 28px 12px 8px 24px;
-    background-color: #fff;
-    z-index: 100;
+    background-color: $black-000;
+    z-index: $toast-wrapper-zIndex;
   }
 
   &-title {
