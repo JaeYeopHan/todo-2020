@@ -44,7 +44,7 @@ const _ = createSlice({
   name,
   initialState,
   reducers: {
-    add(state, { payload }: PayloadAction<IAddPayload>) {
+    add(state: ITodo, { payload }: PayloadAction<IAddPayload>) {
       const { contents, createdTime } = payload;
 
       state.items.push({
@@ -54,12 +54,12 @@ const _ = createSlice({
         isCompleted: false
       });
     },
-    delete(state, { payload }: PayloadAction<IDeletePayload>) {
+    delete(state: ITodo, { payload }: PayloadAction<IDeletePayload>) {
       const newItems = state.items.filter(({ id }) => payload.id !== id);
 
       state.items = newItems;
     },
-    toggle(state, { payload }: PayloadAction<ITogglePayload>) {
+    toggle(state: ITodo, { payload }: PayloadAction<ITogglePayload>) {
       const newItems = state.items.map((item: IItem) => {
         if (payload.id === item.id) {
           item.isCompleted = !item.isCompleted;
@@ -69,7 +69,7 @@ const _ = createSlice({
 
       state.items = newItems;
     },
-    changeFilter(state, { payload }: PayloadAction<{ filter: Filter }>) {
+    changeFilter(state: ITodo, { payload }: PayloadAction<{ filter: Filter }>) {
       state.currentFilter = payload.filter;
     }
   }

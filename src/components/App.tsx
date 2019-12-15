@@ -10,6 +10,7 @@ import { IItem, TODO, todoSelectors } from "@/features/Todo";
 import { Filters } from "./Filters";
 import { Input } from "./Input";
 import { Item } from "./Item";
+import { Toast } from "./shared/Toast";
 
 export default () => {
   const result = useSelector<IRootState, IItem[]>(state =>
@@ -26,6 +27,7 @@ export default () => {
         ))}
       </ListContainer>
       <Filters />
+      <Toast>Error</Toast>
     </Main>
   );
 };
