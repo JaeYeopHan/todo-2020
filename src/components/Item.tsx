@@ -27,12 +27,14 @@ export const Item = (props: IItemProps) => {
       />
       <label className="item-checkbox-label" htmlFor={id} />
       <div className={itemContentsStyle}>{contents}</div>
-      <button
-        className="item-button"
-        onClick={() => dispatch(todoActions.delete({ id }))}
-      >
-        X
-      </button>
+      {isCompleted && (
+        <button
+          className="item-button"
+          onClick={() => dispatch(todoActions.delete({ id }))}
+        >
+          X
+        </button>
+      )}
     </li>
   );
 };
