@@ -13,8 +13,8 @@ export const Filters = () => {
     todoSelectors.filter(state[TODO])
   );
   const filterButtonStyle = (val: Filter) =>
-    classnames("filter-button", {
-      "filter-button--active": val === currentFilter
+    classnames("filters-button", {
+      "filters-button--active": val === currentFilter
     });
 
   return (
@@ -23,7 +23,7 @@ export const Filters = () => {
         return (
           <button
             className={filterButtonStyle(value)}
-            key={`filter_button_${index}`}
+            key={`filters_button_${index}`}
             onClick={() =>
               dispatch(todoActions.changeFilter({ filter: value }))
             }

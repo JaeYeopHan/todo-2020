@@ -1,12 +1,12 @@
 .input {
   display: flex;
-}
 
-.input-textarea {
-  flex: 1;
-  resize: none;
-  border: #ffe8d6;
-  padding: 12px;
+  &-textarea {
+    flex: 1;
+    resize: none;
+    border: #ffe8d6;
+    padding: 12px;
+  }
 }
 
 .btn-submit {
