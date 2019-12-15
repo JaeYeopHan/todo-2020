@@ -9,6 +9,10 @@
     background-color: transparent;
     color: $black-300;
 
+    &:hover {
+      background-color: $orange-200;
+    }
+
     &--active {
       color: $orange-700;
     }

@@ -2,12 +2,17 @@
 
 .input {
   display: flex;
+  transition: border 0.2s;
 
   &-textarea {
     flex: 1;
     resize: none;
-    border: $orange-200;
+    border: 1px solid $orange-200;
     padding: 12px;
+
+    &--warning {
+      border: 1px solid $warn;
+    }
   }
 }
 
@@ -15,4 +20,10 @@
   background-color: $orange-700;
   color: $orange-100;
   border: transparent;
+  transition: background 0.2s;
+
+  &--warning {
+    cursor: not-allowed;
+    background-color: $black-300;
+  }
 }

@@ -1,8 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-function isValidate(val: string) {
-  return val !== "a";
-}
+import { isValidateInput } from "@/utils/validate";
 
 export const useValidateInput = (
   intialValue = ""
@@ -12,7 +10,7 @@ export const useValidateInput = (
   const isEmpty = val === "";
 
   useEffect(() => {
-    setError(!isValidate(val));
+    setError(!isValidateInput(val));
   }, [val]);
 
   return [val, setVal, isError, isEmpty];
