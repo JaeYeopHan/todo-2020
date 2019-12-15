@@ -1,3 +1,5 @@
+@import "../styles/variables";
+
 .item {
   display: flex;
   padding: 8px;
@@ -9,12 +11,12 @@
 
     &--cancel {
       text-decoration: line-through;
-      color: #a19f9c;
+      color: $black-300;
     }
   }
 
   &-button {
-    color: #ffd4a3;
+    color: $orange-200;
     background-color: transparent;
     border: transparent;
     border-radius: 50%;
@@ -26,7 +28,7 @@
     + label {
       position: relative;
       display: inline-block;
-      margin-right: 1.5rem;
+      margin-right: 1.5em;
       cursor: pointer;
 
       &:before {
@@ -34,11 +36,11 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 1rem;
-        height: 1rem;
-        border: 1px solid #ffd4a3;
+        width: 1em;
+        height: 1em;
+        border: 1px solid $orange-400;
         border-radius: 50%;
-        background: #fff;
+        background: $black-000;
         text-align: center;
         transition: background 200ms ease-out;
       }
@@ -48,7 +50,7 @@
       + label {
         &:before {
           content: "";
-          background: #ffd4a3;
+          background: $orange-400;
         }
 
         &:after {
@@ -59,8 +61,8 @@
           width: 5px;
           height: 10px;
           transform: rotate(45deg);
-          border-bottom: 2px solid #ff971d;
-          border-right: 2px solid #ff971d;
+          border-bottom: 2px solid $orange-700;
+          border-right: 2px solid $orange-700;
         }
       }
     }

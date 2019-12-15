@@ -1,6 +1,8 @@
+@import "../../styles/variables";
+
 .header {
   font-size: 4em;
   font-weight: bolder;
   text-align: center;
-  color: #232020;
+  color: $black-700;
 }

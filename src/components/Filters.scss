@@ -1,3 +1,5 @@
+@import "../styles/variables";
+
 .filters {
   display: flex;
 
@@ -5,10 +7,10 @@
     flex: 1;
     padding: 4px 0px;
     background-color: transparent;
-    color: #a19f9c;
+    color: $black-300;
 
     &--active {
-      color: #ff971d;
+      color: $orange-700;
     }
   }
 }
