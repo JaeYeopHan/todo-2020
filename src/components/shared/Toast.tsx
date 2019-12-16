@@ -4,6 +4,7 @@ import React, { ReactNode } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { DrawerTransition } from '@/components/shared/transition/DrawerTransition'
+import { FadeTransition } from "@/components/shared/transition/FadeTransition";
 import { IRootState } from "@/features";
 import { IToast, TOAST, toastActions } from "@/features/Toast";
 
@@ -19,24 +20,26 @@ export const Toast = (props: IToastProps) => {
   const isOpen = toast[props.id];
 
   return (
-    <div className="toast-dimmed" style={{ display: isOpen ? 'block' : 'none' }}>
-      <DrawerTransition in={isOpen}>
-        <div className="toast-wrapper">
-          <h3 className="toast-title">Info</h3>
-          <div className="toast-contents">{props.children}</div>
-          <button
-            className="toast-button"
-            onClick={() => {
-              dispatch(toastActions.close(props.id));
-              if (props.onClose) {
-                props.onClose();
-              }
-            }}
-          >
-            OK
+    <FadeTransition in={isOpen}>
+      <div className="toast-dimmed" style={{ display: isOpen ? 'block' : 'none' }}>
+        <DrawerTransition in={isOpen}>
+          <div className="toast-wrapper">
+            <h3 className="toast-title">Info</h3>
+            <div className="toast-contents">{props.children}</div>
+            <button
+              className="toast-button"
+              onClick={() => {
+                dispatch(toastActions.close(props.id));
+                if (props.onClose) {
+                  props.onClose();
+                }
+              }}
+            >
+              OK
         </button>
-        </div>
-      </DrawerTransition>
-    </div>
+          </div>
+        </DrawerTransition>
+      </div>
+    </FadeTransition>
   );
 };
