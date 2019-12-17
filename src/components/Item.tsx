@@ -17,7 +17,7 @@ export const Item = (props: IItemProps) => {
   });
 
   return (
-    <li className="item">
+    <li className="item" onClick={() => dispatch(todoActions.toggle({ id }))}>
       <input
         className="item-checkbox"
         type="checkbox"
