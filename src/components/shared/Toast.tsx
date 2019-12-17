@@ -3,7 +3,7 @@ import "./Toast.scss";
 import React, { ReactNode } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { DrawerTransition } from '@/components/shared/transition/DrawerTransition'
+import { DrawerTransition } from "@/components/shared/transition/DrawerTransition";
 import { FadeTransition } from "@/components/shared/transition/FadeTransition";
 import { IRootState } from "@/features";
 import { IToast, TOAST, toastActions } from "@/features/Toast";
@@ -38,7 +38,7 @@ export const Toast = (props: IToastProps) => {
               }}
             >
               OK
-        </button>
+            </button>
           </div>
         </DrawerTransition>
       </Dimmed>
