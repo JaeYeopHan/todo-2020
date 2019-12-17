@@ -6,7 +6,7 @@ import { ListContainer } from "@/components/shared/ListContainer";
 import { Main } from "@/components/shared/Main";
 import { IRootState } from "@/features";
 import { IItem, TODO, todoSelectors } from "@/features/Todo";
-import { useRemout } from "@/hooks/useRemount";
+import { useRemount } from "@/hooks/useRemount";
 
 import { Filters } from "./Filters";
 import { Input } from "./Input";
@@ -17,7 +17,7 @@ export default () => {
   const items = useSelector<IRootState, IItem[]>(state =>
     todoSelectors.visibleItems(state[TODO])
   );
-  const [key, remount] = useRemout();
+  const [key, remount] = useRemount();
 
   return (
     <Main key={key}>
