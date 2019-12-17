@@ -1,7 +1,7 @@
 export function encode(val: string) {
-  return btoa(val);
+  return window.btoa(encodeURIComponent(val));
 }
 
 export function decode(encodeed: string) {
-  return atob(encodeed);
+  return decodeURIComponent(window.atob(encodeed));
 }
