@@ -8,6 +8,8 @@ import { FadeTransition } from "@/components/shared/transition/FadeTransition";
 import { IRootState } from "@/features";
 import { IToast, TOAST, toastActions } from "@/features/Toast";
 
+import { Dimmed } from "./Dimmed";
+
 interface IToastProps {
   children: ReactNode;
   id: string;
@@ -21,7 +23,7 @@ export const Toast = (props: IToastProps) => {
 
   return (
     <FadeTransition in={isOpen}>
-      <div className="toast-dimmed" style={{ display: isOpen ? 'block' : 'none' }}>
+      <Dimmed isShow={isOpen}>
         <DrawerTransition in={isOpen}>
           <div className="toast-wrapper">
             <h3 className="toast-title">Info</h3>
@@ -39,7 +41,7 @@ export const Toast = (props: IToastProps) => {
         </button>
           </div>
         </DrawerTransition>
-      </div>
+      </Dimmed>
     </FadeTransition>
   );
 };
