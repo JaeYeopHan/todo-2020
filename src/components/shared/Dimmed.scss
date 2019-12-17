@@ -1,0 +1,17 @@
+.dimmed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: $toast-zIndex;
+  width: 100%;
+
+  &:before {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $dimmed-background;
+    content: "";
+  }
+}
