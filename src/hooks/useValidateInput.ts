@@ -7,7 +7,7 @@ export const useValidateInput = (
 ): [string, Dispatch<SetStateAction<string>>, boolean, boolean] => {
   const [val, setVal] = useState(intialValue);
   const [isError, setError] = useState(false);
-  const isEmpty = val === "";
+  const isEmpty = val.trim() === "";
 
   useEffect(() => {
     setError(!isValidateInput(val));
