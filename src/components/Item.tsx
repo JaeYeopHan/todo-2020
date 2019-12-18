@@ -5,11 +5,13 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 import { IItem, todoActions } from "@/features/Todo";
+import { useTouchStyle } from '@/hooks/useTouchStyle'
 
-interface IItemProps extends IItem {}
+interface IItemProps extends IItem { }
 
 export const Item = (props: IItemProps) => {
   const dispatch = useDispatch();
+  const itemProps = useTouchStyle("item", "item--selected")
   const { id, contents, isCompleted } = props;
 
   const itemContentsStyle = classnames("item-contents", {
@@ -17,7 +19,10 @@ export const Item = (props: IItemProps) => {
   });
 
   return (
-    <li className="item" onClick={() => dispatch(todoActions.toggle({ id }))}>
+    <li
+      {...itemProps}
+      onClick={() => dispatch(todoActions.toggle({ id }))}
+    >
       <input
         className="item-checkbox"
         type="checkbox"
