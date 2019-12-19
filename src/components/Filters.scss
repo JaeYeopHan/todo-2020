@@ -12,5 +12,8 @@
     &--active {
       color: $orange-700;
     }
+    &--selected {
+      background-color: $orange-200;
+    }
   }
 }
