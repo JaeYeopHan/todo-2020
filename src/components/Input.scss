@@ -26,4 +26,7 @@
     cursor: not-allowed;
     background-color: $black-300;
   }
+  &--selected {
+    background-color: $orange-800;
+  }
 }

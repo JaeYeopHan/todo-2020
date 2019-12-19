@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 
 import { toastActions } from "@/features/Toast";
 import { TODO, todoActions } from "@/features/Todo";
+import { useTouchStyle } from "@/hooks/useTouchStyle";
 import { useValidateInput } from "@/hooks/useValidateInput";
 
 export const Input = () => {
@@ -35,6 +36,7 @@ export const Input = () => {
   const submitButtonStyle = classnames("btn-submit", {
     "btn-submit--warning": isError
   });
+  const touchStyleProps = useTouchStyle(submitButtonStyle, "btn-submit--selected")
 
   useEffect(() => {
     if (isError) {
@@ -51,7 +53,7 @@ export const Input = () => {
         placeholder="Enter the TODO item"
         wrap="off"
       />
-      <button className={submitButtonStyle} onClick={onClickSubmit}>
+      <button {...touchStyleProps} onClick={onClickSubmit}>
         Submit
       </button>
     </section>
