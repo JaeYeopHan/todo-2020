@@ -11,7 +11,7 @@ interface IItemProps extends IItem { }
 
 export const Item = (props: IItemProps) => {
   const dispatch = useDispatch();
-  const itemProps = useTouchStyle("item", "item--selected")
+  const touchStyleProps = useTouchStyle("item", "item--selected")
   const { id, contents, isCompleted } = props;
 
   const itemContentsStyle = classnames("item-contents", {
@@ -20,7 +20,7 @@ export const Item = (props: IItemProps) => {
 
   return (
     <li
-      {...itemProps}
+      {...touchStyleProps}
       onClick={() => dispatch(todoActions.toggle({ id }))}
     >
       <input

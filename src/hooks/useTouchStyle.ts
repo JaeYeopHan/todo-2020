@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 export function useTouchStyle(
   defaultClassName: string,
@@ -9,12 +9,14 @@ export function useTouchStyle(
   const className = classnames(defaultClassName, {
     [selectClassName]: isClicked
   });
-  const onTouchStart = () => setClicking(true);
-  const onTouchEnd = () => setClicking(false);
+  const activate = useCallback(() => setClicking(true), []);
+  const inactivate = useCallback(() => setClicking(false), []);
 
   return {
     className,
-    onTouchStart,
-    onTouchEnd
+    onTouchStart: activate,
+    onTouchEnd: inactivate,
+    onMouseDown: activate,
+    onMouseUp: inactivate
   };
 }
