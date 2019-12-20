@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 
 import { toastActions } from "@/features/Toast";
 import { TODO, todoActions } from "@/features/Todo";
+import { useHotkey } from "@/hooks/useHotkey";
 import { useTouchStyle } from "@/hooks/useTouchStyle";
 import { useValidateInput } from "@/hooks/useValidateInput";
 
@@ -43,6 +44,7 @@ export const Input = () => {
       dispatch(toastActions.open(TODO));
     }
   }, [val, isError, setVal, dispatch]);
+  useHotkey('command+enter', () => onClickSubmit())
 
   return (
     <section className="input">
