@@ -17,6 +17,7 @@ export function useTouchStyle(
     onTouchStart: activate,
     onTouchEnd: inactivate,
     onMouseDown: activate,
-    onMouseUp: inactivate
+    onMouseUp: inactivate,
+    onMouseLeave: inactivate
   };
 }
